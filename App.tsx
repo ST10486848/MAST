@@ -1,20 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import{View,StyleSheet}from'react-native';
+import React,{useState} from 'react';
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import styles from './Stylesheets/Styles';
+import HomePage from '../Screens/HomePage';
+import FilterCourse from '../Screens/FilterScreen';
+import AddItems from '../Screens/AddItem';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
+const Stack = createNativeStackNavigator();
+const AddItemsAny: any = AddItems;
 export default function App() {
+  const [meals, setMeals] = useState<any[]>([]);
+  const [selectedMeals, setSelectedMeals] = useState<any[]>([]);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+     <Stack.Navigator>
+        <Stack.Screen name="HomePage">
+          {props => (
+            <HomePage
+              {...props}
+              meals={meals}
+              setMeals={setMeals}
+              selectedMeals={selectedMeals}
+              setSelectedMeals={setSelectedMeals}
+            />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="AddItems">
+  {props => (
+    <AddItemsAny
+      {...props}
+      meals={meals}
+      setMeals={setMeals}
+    />
+  )}
+</Stack.Screen>
+<Stack.Screen name="FilterCourse">
+  {props => (
+    <FilterCourse
+      {...props}
+      meals={meals}
+    />
+  )}
+</Stack.Screen>
+     </Stack.Navigator>
+     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
+
