@@ -1,7 +1,7 @@
 import{View,StyleSheet}from'react-native';
 import React,{useState} from 'react';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import styles from './Stylesheets/styles';
+import styles from '../Stylesheets/Styles';
 import HomePage from '../Screens/HomePage';
 import FilterCourse from '../Screens/FilterScreen';
 import AddItems from '../Screens/AddItem';
@@ -33,7 +33,7 @@ export default function App() {
     <AddItemsAny
       {...props}
       meals={meals}
-      setMeals={setMeals}
+      setMeals={setMeals} // Ensure this prop is defined in AddItems
     />
   )}
 </Stack.Screen>
