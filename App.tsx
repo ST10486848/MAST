@@ -1,7 +1,7 @@
 import{View,StyleSheet}from'react-native';
 import React,{useState} from 'react';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import styles from './Stylesheets/Styles';
+import styles from './Stylesheets/styles';
 import HomePage from '../Screens/HomePage';
 import FilterCourse from '../Screens/FilterScreen';
 import AddItems from '../Screens/AddItem';
